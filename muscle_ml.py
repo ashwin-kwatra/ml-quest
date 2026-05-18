@@ -1,6 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-
 # 1. Load your custom dataset
 df = pd.read_csv('muscle_progress.csv')
 
