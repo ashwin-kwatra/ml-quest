@@ -66,9 +66,33 @@ print(np.max(a1))
 print(np.min(a1))
 print(np.sum(a1))
 print(np.prod(a1))
-# mean , median , std , var , sin , cos , tan (mean median , standard deviation , variance)
+# mean , median , std , var , sin , cos , tan (mean ,median , standard deviation , variance)
 # o is collumn and 1 is row 
 print(a1)
 print(np.max(a1,axis=0)) # maximum number in that column
 print(np.min(a1,axis=1)) # minimum number in that row
 print(np.dot(a1,a2))#dot product
+print(np.log(a1))
+print(np.exp(a1))
+
+#floor and ciel and round that turn float to int
+print(np.floor(a1))
+print(np.ceil(a1))
+print(np.round(a1))
+
+#slicing
+#JUST LIKE PYTHON BUT EK HI DABBE M COMMA LGAKE
+print(a3)
+print(a3[1,2])
+print(arr[1:3]) # index 1 to index 3 , not inluding index 3
+print(a3[0:2,0]) #2nd dimension ka 0 to 2 slice aur 1st dimension ki sirf 0th
+print(a3[0,:]) # trick top find rows and columns
+print(a3[:,0]) 
+
+# looping :
+for i in a3:
+    print(i)
+# isme every elemt = 1 less dimension
+for i in np.nditer(a3):
+    print(i)
+# isme nd array or 1d mein conver tkrke sab ek ek krke print krta h
