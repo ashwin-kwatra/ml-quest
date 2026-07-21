@@ -1,8 +1,10 @@
 import pandas as pd
 import numpy as np
 import sys 
+import matplotlib.pyplot as plt
 np.set_printoptions(suppress=True)
 import time 
+print(plt.get_backend())
 #making basic series with arrays
 
 country= ['a','b','c','d','e','f','g','g']
@@ -78,3 +80,24 @@ temp=pd.Series([1,2,np.nan,1,2,3,np.nan,4,np.nan,5,6,1,2,3,7,8,np.nan,np.nan])
 print(temp.drop_duplicates())
 print(temp.duplicated().sum())
 print(temp.isnull())
+print(temp.fillna(0)) # replaces na with 0
+temp.dropna(inplace=True)
+print(temp)
+print(musclee.value_counts())
+
+# practise questions :
+
+movies=pd.read_csv("movies.csv")
+ipl=pd.read_csv("ipl-matches.csv")
+print(movies.head(2))
+print(ipl.head(2))
+print(ipl[~ipl["MatchNumber"].str.isdigit()]["Player_of_Match"].value_counts()) # man of the match amount of matches that are final/semifinal
+#ipl["TossDecision"].value_counts().plot(kind="pie") # plot batting/bowling toss descisions
+# plt.show()
+print(movies.sort_values('year_of_release'))
+print(movies.sort_values(['year_of_release','title_x'])) # sorting values
+print(ipl.set_index("MatchNumber"))
+print(ipl.reset_index) # turns index  into a column and adds a defualt index back
+print(movies.rename(columns={"imdb_id":"imdb"},inplace=True))
+
+#a

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Predictor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            border-radius: 15px 15px 0 0 !important;
+            text-align: center;
+            padding: 2rem;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 2rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .result-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .result-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Placement Predictor</h3>
+        <p class="mb-0">Enter your details to predict your status</p>
+    </div>
+    <div class="card-body p-4">
+        <form action="/predict" method="post">
+            <div class="mb-3">
+                <label for="cgpa" class="form-label">CGPA</label>
+                <input type="number" step="0.01" name="cgpa" class="form-control" id="cgpa" placeholder="e.g. 7.5" value="{{ cgpa if cgpa else '' }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="iq" class="form-label">IQ</label>
+                <input type="number" step="1" name="iq" class="form-control" id="iq" placeholder="e.g. 110" value="{{ iq if iq else '' }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict Status</button>
+        </form>
+
+        {% if prediction_text %}
+            <div class="result {% if 'Placed' in prediction_text and 'Not' not in prediction_text %}result-success{% else %}result-danger{% endif %}">
+                {{ prediction_text }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
